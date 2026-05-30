@@ -38,7 +38,6 @@ const Experiences = () => {
   return (
     <Section id="experiences" title="Experiences">
       <div className="timeline-container">
-        <div className="timeline-track"></div>
         {experiences.map((exp, index) => (
           <motion.div 
             key={index} 
@@ -48,6 +47,7 @@ const Experiences = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
+            <div className="timeline-line"></div>
             <div className="timeline-dot"></div>
             <div className="timeline-content glass-panel">
               <span className="timeline-date">{exp.period}</span>
@@ -70,35 +70,46 @@ const Experiences = () => {
           position: relative;
           max-width: 800px;
           margin: 0 auto;
-          padding-left: 2rem;
-        }
-
-        .timeline-track {
-          position: absolute;
-          left: 7px;
-          top: 8px;
-          bottom: 8px;
-          width: 2px;
-          background: linear-gradient(
-            to bottom,
-            var(--color-accent) 0%,
-            rgba(255, 239, 179, 0.15) 80%,
-            transparent 100%
-          );
+          padding-left: 2.5rem;
         }
 
         .timeline-item {
           position: relative;
-          margin-bottom: 2.5rem;
+          margin-bottom: 3rem;
         }
 
         .timeline-item:last-child {
           margin-bottom: 0;
         }
 
+        .timeline-line {
+          position: absolute;
+          left: -1.25rem;
+          transform: translateX(-50%);
+          width: 2px;
+          background: linear-gradient(
+            to bottom,
+            rgba(255, 239, 179, 0.05) 0%,
+            var(--color-accent) 50%,
+            rgba(255, 239, 179, 0.05) 100%
+          );
+          opacity: 0.25;
+          top: 0;
+          bottom: -3rem; /* Spans the gap to the next item */
+          z-index: 1;
+        }
+
+        .timeline-item:first-of-type .timeline-line {
+          top: 50%;
+        }
+
+        .timeline-item:last-of-type .timeline-line {
+          bottom: 50%; /* Ends exactly at the last dot */
+        }
+
         .timeline-dot {
           position: absolute;
-          left: -2rem;
+          left: -1.25rem;
           top: 50%;
           transform: translate(-50%, -50%);
           width: 14px;

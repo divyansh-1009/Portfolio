@@ -1,42 +1,95 @@
-import React from 'react';
 import Section from '../components/Section';
 import { RevealText, RevealHeading } from '../components/RevealText';
+import Dock from '../components/Dock';
+import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
 
 const Contact = () => {
+  const socialItems = [
+    {
+      icon: <FiPhone />,
+      label: 'Phone',
+      onClick: () => {
+        navigator.clipboard.writeText('+91 9210992006').catch(() => {});
+        window.location.href = 'tel:+919210992006';
+      }
+    },
+    {
+      icon: <FiMail />,
+      label: 'Email',
+      onClick: () => {
+        window.location.href = 'mailto:divyanshyadav1027@gmail.com';
+      }
+    },
+    {
+      icon: <FiLinkedin />,
+      label: 'LinkedIn',
+      onClick: () => {
+        window.open('https://www.linkedin.com/in/divyanshyadav1027/', '_blank');
+      }
+    },
+    {
+      icon: <FiGithub />,
+      label: 'GitHub',
+      onClick: () => {
+        window.open('https://github.com/divyansh-1009', '_blank');
+      }
+    }
+  ];
+
   return (
     <Section id="contact">
-      <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <RevealHeading text="Let's work together." style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: 'var(--color-text)', display: 'inline-flex', flexWrap: 'wrap', justifyContent: 'center' }} />
+      <div className="contact-container">
+        <RevealHeading 
+          text="Let's work together." 
+          style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+            marginBottom: '1rem', 
+            color: 'var(--color-text)', 
+            display: 'inline-flex', 
+            flexWrap: 'wrap', 
+            justifyContent: 'center' 
+          }} 
+        />
         <RevealText 
           text="Feel free to reach out if you have a question, or just want to connect." 
-          style={{ fontSize: '1.2rem', opacity: 0.8, marginBottom: '3rem', textAlign: 'center' }}
-          delay={0.6}
+          style={{ 
+            fontSize: '1.15rem', 
+            opacity: 0.8, 
+            marginBottom: '4rem', 
+            textAlign: 'center',
+            maxWidth: '500px'
+          }}
+          delay={0.4}
         />
-        <a 
-          href="mailto:hello@example.com" 
-          style={{
-            display: 'inline-block',
-            fontSize: '2rem',
-            fontWeight: 500,
-            color: 'var(--color-text)',
-            borderBottom: '2px solid var(--color-accent)',
-            paddingBottom: '0.5rem',
-            transition: 'all 0.3s'
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.color = 'var(--color-accent)';
-            e.currentTarget.style.borderColor = 'transparent';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.color = 'var(--color-text)';
-            e.currentTarget.style.borderColor = 'var(--color-accent)';
-          }}
-        >
-          Say Hello
-        </a>
+        
+        <div className="dock-wrapper">
+          <Dock items={socialItems} />
+        </div>
       </div>
+
+      <style>{`
+        .contact-container {
+          text-align: center;
+          max-width: 600px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding-bottom: 2rem;
+        }
+
+        .dock-wrapper {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 1rem;
+        }
+      `}</style>
     </Section>
   );
 };
 
 export default Contact;
+
