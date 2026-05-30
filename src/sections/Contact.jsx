@@ -8,7 +8,7 @@ const Contact = () => {
       <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <RevealHeading text="Let's work together." style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: 'var(--color-text)', display: 'inline-flex', flexWrap: 'wrap', justifyContent: 'center' }} />
         <RevealText 
-          text="Feel free to reach out if you're looking for a developer, have a question, or just want to connect." 
+          text="Feel free to reach out if you have a question, or just want to connect." 
           style={{ fontSize: '1.2rem', opacity: 0.8, marginBottom: '3rem', textAlign: 'center' }}
           delay={0.6}
         />

@@ -1,43 +1,194 @@
-import React from 'react';
 import Section from '../components/Section';
 import { RevealText } from '../components/RevealText';
+import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    role: 'Senior Frontend Developer',
-    company: 'Tech Innovators',
-    period: '2021 - Present',
-    description: 'Led the frontend architecture for a high-traffic e-commerce platform. Improved Core Web Vitals by 40% and mentored junior developers.'
+    role: 'Software Development Intern',
+    company: 'Tech Swarm',
+    period: 'September 2025 - November 2025',
+    bulletPoints: [
+      'Designed and established a secure, bidirectional telemetry communication channel between ground control stations and fleets of autonomous unmanned aerial vehicles (UAVs) using MQTT over TLS and highly optimized Protocol Buffers.',
+      'Architected a high-throughput, concurrent data ingestion pipeline in Go using Apache Kafka to asynchronously ingest and buffer massive real-time sensor streams, persisting downsampled flight data into InfluxDB and engineering dynamic Grafana dashboards for geospatial flight analytics.'
+    ]
   },
   {
-    role: 'Frontend Developer',
-    company: 'Creative Agency',
-    period: '2018 - 2021',
-    description: 'Developed interactive and engaging web applications for various clients. Specialized in smooth animations and pixel-perfect implementations.'
+    role: 'Software Development Intern',
+    company: 'MyGyan',
+    period: 'September 2025 - January 2026',
+    bulletPoints: [
+      'Engineered an intelligent, LLM-driven multimodal pipeline capable of dynamically generating personalized video lectures and quizzes matched to custom learning goals, implementing advanced semantic caching to efficiently store and reuse assets.',
+      'Developed a custom LLM routing strategy leveraging RouteLLM to intelligently direct prompts based on domain proficiency, cost constraints, and request urgency to achieve optimal accuracy and latency.',
+      'Architected and orchestrated scalable, containerized microservices using Amazon EKS, and designed event-driven serverless routines on AWS Lambda to ensure highly cost-effective, high-availability infrastructure.',
+      'Automated secure CI/CD pipelines using GitHub Actions and built centralized observability dashboards with AWS CloudWatch to streamline deployments and accelerate incident response times.'
+    ]
   },
   {
-    role: 'Web Developer',
-    company: 'Startup Hub',
-    period: '2016 - 2018',
-    description: 'Built MVPs for early-stage startups using React and Node.js. Focused on rapid iteration and responsive design.'
+    role: 'Computer Networks and Cryptography Lead',
+    company: 'Inter IIT Tech 14.0, Patna (Qtrino Labs)',
+    period: 'November 2025 - December 2025',
+    bulletPoints: [
+      'Implemented a secure DTLS 1.3 communication protocol tailored for bare-metal RISC-V IoT platforms, integrating state-of-the-art Post-Quantum Cryptography (CRYSTAL-Kyber and CRYSTAL-Dilithium) and pre-shared key (PSK) authentication with zero dynamic memory allocation to prevent memory fragmentation.',
+      'Designed and engineered an asynchronous cryptographic data pipeline utilizing lock-free ring buffers for high-speed packet ingestion, optimizing execution speed and compressing the system memory footprint to sustain real-time, low-latency secure transmissions.'
+    ]
   }
 ];
 
 const Experiences = () => {
   return (
     <Section id="experiences" title="Experiences">
-      <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div className="timeline-container">
+        <div className="timeline-track"></div>
         {experiences.map((exp, index) => (
-          <div key={index} className="glass-panel" style={{ padding: '2rem', borderLeft: '4px solid var(--color-accent)' }}>
-            <h3 style={{ marginBottom: '0.5rem' }}>{exp.role}</h3>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap' }}>
-              <span style={{ color: 'var(--color-accent)', fontWeight: 500 }}>{exp.company}</span>
-              <span style={{ opacity: 0.7, fontSize: '0.9rem' }}>{exp.period}</span>
+          <motion.div 
+            key={index} 
+            className="timeline-item"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="timeline-dot"></div>
+            <div className="timeline-content glass-panel">
+              <span className="timeline-date">{exp.period}</span>
+              <h3 className="timeline-role">{exp.role}</h3>
+              <h4 className="timeline-company">{exp.company}</h4>
+              <ul className="timeline-bullets">
+                {exp.bulletPoints.map((point, ptIdx) => (
+                  <li key={ptIdx} className="timeline-bullet-item">
+                    <RevealText text={point} className="timeline-description" />
+                  </li>
+                ))}
+              </ul>
             </div>
-            <RevealText text={exp.description} style={{ opacity: 0.9 }} />
-          </div>
+          </motion.div>
         ))}
       </div>
+
+      <style>{`
+        .timeline-container {
+          position: relative;
+          max-width: 800px;
+          margin: 0 auto;
+          padding-left: 2rem;
+        }
+
+        .timeline-track {
+          position: absolute;
+          left: 7px;
+          top: 8px;
+          bottom: 8px;
+          width: 2px;
+          background: linear-gradient(
+            to bottom,
+            var(--color-accent) 0%,
+            rgba(255, 239, 179, 0.15) 80%,
+            transparent 100%
+          );
+        }
+
+        .timeline-item {
+          position: relative;
+          margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+          margin-bottom: 0;
+        }
+
+        .timeline-dot {
+          position: absolute;
+          left: -2rem;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: var(--color-bg);
+          border: 3px solid var(--color-accent);
+          box-shadow: 0 0 10px rgba(255, 239, 179, 0.3);
+          z-index: 2;
+          transition: all 0.3s ease;
+        }
+
+        .timeline-content {
+          padding: 2rem;
+          border: 1px solid rgba(255, 239, 179, 0.05);
+          background: rgba(255, 239, 179, 0.02);
+          border-radius: 16px;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .timeline-date {
+          display: inline-block;
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: var(--color-accent);
+          opacity: 0.7;
+          margin-bottom: 0.5rem;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+        }
+
+        .timeline-role {
+          font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+          font-weight: 600;
+          color: var(--color-text);
+          margin-bottom: 0.25rem;
+        }
+
+        .timeline-company {
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--color-accent);
+          margin-bottom: 0.5rem;
+          opacity: 0.9;
+        }
+
+        .timeline-bullets {
+          list-style-type: none;
+          margin: 1rem 0 0 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .timeline-bullet-item {
+          position: relative;
+          padding-left: 1.25rem;
+        }
+
+        .timeline-bullet-item::before {
+          content: "—";
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: var(--color-accent);
+          opacity: 0.7;
+        }
+
+        .timeline-description {
+          font-size: 0.95rem;
+          color: var(--color-text);
+          opacity: 0.85;
+          line-height: 1.6;
+        }
+
+        /* Hover states */
+        .timeline-item:hover .timeline-dot {
+          background: var(--color-accent);
+          box-shadow: 0 0 15px var(--color-accent);
+          transform: translate(-50%, -50%) scale(1.25);
+        }
+
+        .timeline-content:hover {
+          background: rgba(255, 239, 179, 0.05);
+          border-color: rgba(255, 239, 179, 0.25);
+          transform: translateY(-4px);
+          box-shadow: 0 10px 30px rgba(255, 239, 179, 0.05);
+        }
+      `}</style>
     </Section>
   );
 };

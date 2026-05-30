@@ -1,4 +1,3 @@
-import React from 'react';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
@@ -6,7 +5,6 @@ import About from './sections/About';
 import Experiences from './sections/Experiences';
 import Projects from './sections/Projects';
 import Skills from './sections/Skills';
-import Interests from './sections/Interests';
 import Contact from './sections/Contact';
 
 export default function App() {
@@ -28,7 +26,6 @@ export default function App() {
           <Experiences />
           <Projects />
           <Skills />
-          <Interests />
           <Contact />
         </main>
 
