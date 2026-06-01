@@ -6,7 +6,7 @@ import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
 const Contact = () => {
   const socialItems = [
     {
-      icon: <FiPhone />,
+      icon: <FiPhone aria-hidden="true" />,
       label: 'Phone',
       onClick: () => {
         navigator.clipboard.writeText('+91 9210992006').catch(() => {});
@@ -14,21 +14,21 @@ const Contact = () => {
       }
     },
     {
-      icon: <FiMail />,
+      icon: <FiMail aria-hidden="true" />,
       label: 'Email',
       onClick: () => {
         window.location.href = 'mailto:divyanshyadav1027@gmail.com';
       }
     },
     {
-      icon: <FiLinkedin />,
+      icon: <FiLinkedin aria-hidden="true" />,
       label: 'LinkedIn',
       onClick: () => {
         window.open('https://www.linkedin.com/in/divyanshyadav1027/', '_blank');
       }
     },
     {
-      icon: <FiGithub />,
+      icon: <FiGithub aria-hidden="true" />,
       label: 'GitHub',
       onClick: () => {
         window.open('https://github.com/divyansh-1009', '_blank');

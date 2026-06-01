@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.yourportfolio.com/sitemap.xml
+Sitemap: https://www.divyanshyadav.me/sitemap.xml

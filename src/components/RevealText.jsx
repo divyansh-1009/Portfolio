@@ -58,16 +58,19 @@ export const RevealHeading = ({ text, delay = 0, style = {}, className = "" }) =
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
+      aria-label={text}
     >
-      {characters.map((char, index) => (
-        <motion.span
-          variants={child}
-          style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-          key={index}
-        >
-          {char}
-        </motion.span>
-      ))}
+      <span aria-hidden="true" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: style.justifyContent || 'center', width: '100%' }}>
+        {characters.map((char, index) => (
+          <motion.span
+            variants={child}
+            style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+            key={index}
+          >
+            {char}
+          </motion.span>
+        ))}
+      </span>
     </motion.h2>
   );
 };

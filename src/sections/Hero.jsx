@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { RevealText } from '../components/RevealText';
-import FaceCanvas from '../components/FaceCanvas';
+
+const FaceCanvas = lazy(() => import('../components/FaceCanvas'));
 
 const Hero = () => {
   const [isDesktop, setIsDesktop] = useState(() =>
@@ -29,7 +30,11 @@ const Hero = () => {
     >
       <div className="container hero-container">
         <div className="hero-visual-wrapper">
-          {isDesktop && <FaceCanvas />}
+          {isDesktop && (
+            <Suspense fallback={<div style={{ width: '100%', height: '400px' }} />}>
+              <FaceCanvas />
+            </Suspense>
+          )}
         </div>
 
         <div className="hero-text-wrapper">

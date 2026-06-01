@@ -104,7 +104,7 @@ const skillGroups = [
 
 const MythicDivider = () => (
   <div className="mythic-divider-container">
-    <svg width="300" height="30" viewBox="0 0 300 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="mythic-divider-svg">
+    <svg width="300" height="30" viewBox="0 0 300 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="mythic-divider-svg" aria-hidden="true">
       {/* Left side wing ornament */}
       <path d="M 30,15 Q 60,8 100,15 Q 120,20 135,15" stroke="var(--color-accent)" strokeWidth="1" fill="none" opacity="0.3" />
       <path d="M 10,15 L 135,15" stroke="var(--color-accent)" strokeWidth="1.2" strokeLinecap="round" />
@@ -141,7 +141,7 @@ const Skills = () => {
                   <div key={index} className="skill-card">
                     <div className="skill-icon-wrapper">
                       {IconComponent ? (
-                        <IconComponent className="skill-icon" size={32} />
+                        <IconComponent className="skill-icon" size={32} aria-hidden="true" />
                       ) : (
                         <div className="skill-icon-placeholder" />
                       )}

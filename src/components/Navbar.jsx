@@ -73,8 +73,10 @@ const Navbar = () => {
           className="mobile-toggle"
           style={{ display: 'block', color: 'var(--color-text)', zIndex: 1001 }}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
         </button>
 
         {/* Mobile Menu */}

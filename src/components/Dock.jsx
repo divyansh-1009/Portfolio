@@ -1,11 +1,17 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
-function DockItem({ children, className = '', onClick, scale, baseItemSize, onMouseEnter, spring }) {
+function DockItem({ children, className = '', onClick, scale, baseItemSize, onMouseEnter, spring, label }) {
   return (
     <motion.div
       onClick={onClick}
       onMouseEnter={onMouseEnter}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick?.();
+        }
+      }}
       className={`dock-item ${className}`}
       style={{
         width: baseItemSize,
@@ -20,6 +26,7 @@ function DockItem({ children, className = '', onClick, scale, baseItemSize, onMo
       }}
       tabIndex={0}
       role="button"
+      aria-label={label}
     >
       {children}
     </motion.div>
@@ -92,6 +99,7 @@ export default function Dock({
               baseItemSize={baseItemSize}
               onMouseEnter={() => setHoveredIndex(index)}
               spring={spring}
+              label={item.label}
             >
               <DockIcon>{item.icon}</DockIcon>
               <DockLabel label={item.label} isVisible={hoveredIndex === index} />

@@ -78,7 +78,7 @@ const Projects = () => {
                 className="project-github-btn"
                 aria-label={`View ${project.title} on GitHub`}
               >
-                <FaGithub />
+                <FaGithub aria-hidden="true" />
               </a>
             </div>
             
@@ -96,6 +96,7 @@ const Projects = () => {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="project-live-link"
+                  aria-label={`Visit live application for ${project.title}`}
                 >
                   {project.liveLabel}
                 </a>

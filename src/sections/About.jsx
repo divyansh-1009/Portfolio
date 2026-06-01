@@ -1,7 +1,7 @@
 import Section from '../components/Section';
 import { RevealText } from '../components/RevealText';
 import { motion } from 'framer-motion';
-import profileImg from '../assets/Divyansh Yadav.jpg';
+import profileImg from '../assets/divyansh_yadav.jpg';
 
 const About = () => {
   return (
@@ -25,6 +25,7 @@ const About = () => {
               src={profileImg} 
               alt="Divyansh Yadav" 
               className="about-image"
+              loading="lazy"
             />
           </div>
         </motion.div>
