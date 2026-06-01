@@ -1,51 +1,234 @@
 import Section from '../components/Section';
 import { RevealText } from '../components/RevealText';
+import { motion } from 'framer-motion';
+import { FaGithub } from 'react-icons/fa';
 
 const projects = [
   {
-    title: 'Old Portfolio',
-    status: 'Live',
-    description: 'A legacy portfolio showcasing early career work and foundational skills.',
+    title: 'OmniView',
+    description: 'OmniView is an on-device screen intelligence system acting as a secure photographic memory. Operating as a background service, it captures screen frames while discarding duplicate captures. The screenshots are then processed to extract context, which is further vectorized and stored locally. Users can query past screen history via an on device LLM.',
+    github: 'https://github.com/divyansh-1009/OmniView',
+    tags: ['Android', 'Kotlin', 'MediaProjection API', 'pHash', 'Accessibility API', 'OCR', 'MobileBERT', 'Gemma 4', 'ObjectBox']
   },
   {
-    title: 'E-commerce Store',
-    status: 'Live',
-    description: 'A fully functional store frontend with cart management and product filtering.',
+    title: 'MiniTrue',
+    description: 'MiniTrue is a decentralized, leaderless time-series database designed for high-throughput IoT telemetry workloads. Operating as a symmetric multi-node cluster, it gossips over TCP and uses a consistent hash ring for deterministic data placement. Ingested data is cached in-memory with pre-aggregated metadata, then compressed and flushed to a custom columnar disk format for fast local and distributed query execution.',
+    github: 'https://github.com/divyansh-1009/MiniTrue-Time-Series-Database',
+    tags: ['Go', 'Gossip Protocol', 'Consistent Hashing', 'Merkle Trees', 'MQTT', 'Gorilla Compression', 'Parquet Storage']
   },
   {
-    title: 'Portmyfolio',
-    status: 'Coming Soon',
-    description: 'A platform to help developers generate portfolios instantly.',
+    title: 'BitVision',
+    description: 'BitVision is designed to predict Bitcoin price trends using raw OHLCV market data and technical indicators like RSI and Bollinger Bands. After training and benchmark testing multiple predictive models—including SVMs, Naive Bayes, Decision Trees, LSTMs, XGBoost, and Neural Networks—Ridge Regression was selected as the final model due to yielding the lowest Mean Absolute Error and highest R-squared score on out-of-sample data.',
+    github: 'https://github.com/divyansh-1009/BitVision',
+    liveUrl: 'https://bitvision-iitj.streamlit.app',
+    liveLabel: 'BitVision',
+    tags: ['Python', 'Scikit-Learn', 'Ridge Regression', 'Pandas', 'NumPy', 'Streamlit']
   },
   {
-    title: 'Task Flow',
-    status: 'Coming Soon',
-    description: 'An elegant task management application focusing on minimal UI.',
+    title: 'ClarifAI',
+    description: 'ClarifAI is an AI-powered learning platform that allows users to upload their coursework and study notes. To help students prepare for exams, it implements a Retrieval-Augmented Generation pipeline using sentence-transformers and Pinecone to ground answers directly in the uploaded documents. The system also generates custom assessment papers and personalized mock tests to track learning progress.',
+    github: 'https://github.com/divyansh-1009/ClarifAI',
+    tags: ['Django', 'Flutter', 'Pinecone', 'Google Gemini', 'SBERT', 'SQLite']
+  },
+  {
+    title: 'The Hive',
+    description: 'The Hive is a multi-device digital wellness and productivity platform that tracks browsing and application habits across Chrome and Android. It uses on-server transformer models to generate semantic embeddings of domains and apps, classifying them automatically via pgvector and HNSW similarity searches. Daily activities are processed through a Bayesian rating system to score productivity trends and gamify habit building.',
+    github: 'https://github.com/divyansh-1009/The-Hive',
+    tags: ['Kotlin', 'Node.js', 'PostgreSQL', 'pgvector', 'Chrome Extension', 'Transformers']
+  },
+  {
+    title: 'Destyn',
+    description: 'Destyn is a college community application designed to connect local students sharing similar interests across nearby campuses. The platform enables users to discover common interests and helps them receive personalized activity recommendations for hanging out in real life. Additionally, it features an anonymous community gossip page and facilitates real-time chat and interactions.',
+    github: 'https://github.com/divyansh-1009/Destyn-Project',
+    tags: ['Next.js', 'Node.js', 'MongoDb', 'Cloudinary', 'WebSockets', 'Google Gemini']
+  },
+  {
+    title: 'Alumni Yearbook Portal',
+    description: 'Alumni Yearbook Portal is a portal designed for the graduating batch of IIT Jodhpur. The platform enables students to upload photo memories and write messages to peers, compiling them automatically into personalized digital yearbooks for each graduate. To drive engagement, it features batch-wide polling alongside private messaging that allows user messages and quotes to be directly integrated into yearbooks.',
+    github: 'https://github.com/divyansh-1009/Alumni-Yearbook/tree/main/alumni-yearbook',
+    tags: ['React', 'PostgreSQL', 'AWS S3', 'Node.js']
+  },
+  {
+    title: 'PathViz',
+    description: 'PathViz is a desktop application designed to visualize maze generation and pathfinding algorithms. Built in C, the system generates random grid mazes and solves them in real-time using Dijkstra\'s and A* search algorithms. The graphical user interface is built natively using GTK, allowing users to watch the step-by-step traversal and compare algorithm efficiencies visually.',
+    github: 'https://github.com/divyansh-1009/ICS_project',
+    tags: ['C', 'GTK', 'Dijkstra', 'A*']
   }
 ];
 
 const Projects = () => {
   return (
     <Section id="projects" title="Projects">
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
+      <div className="projects-grid">
         {projects.map((project, index) => (
-          <div key={index} className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem', transition: 'transform 0.3s', cursor: 'pointer' }} onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <h3 style={{ fontSize: '1.25rem' }}>{project.title}</h3>
-              <span style={{ 
-                fontSize: '0.75rem', 
-                padding: '0.25rem 0.75rem', 
-                borderRadius: '9999px',
-                background: project.status === 'Live' ? 'rgba(255, 239, 179, 0.15)' : 'rgba(255, 239, 179, 0.05)',
-                border: project.status === 'Live' ? '1px solid var(--color-accent)' : '1px solid rgba(255, 239, 179, 0.2)'
-              }}>
-                {project.status}
-              </span>
+          <motion.div 
+            key={index} 
+            className="project-card glass-panel"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="project-header">
+              <h3 className="project-title">{project.title}</h3>
+              <a 
+                href={project.github} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="project-github-btn"
+                aria-label={`View ${project.title} on GitHub`}
+              >
+                <FaGithub />
+              </a>
             </div>
-            <RevealText text={project.description} style={{ opacity: 0.8, fontSize: '0.95rem', flex: 1 }} />
-          </div>
+            
+            <RevealText 
+              text={project.description} 
+              className="project-description"
+              delay={index * 0.1 + 0.2}
+            />
+
+            {project.liveUrl && (
+              <div className="project-live-link-container">
+                <span className="live-link-label">Live App: </span>
+                <a 
+                  href={project.liveUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="project-live-link"
+                >
+                  {project.liveLabel}
+                </a>
+              </div>
+            )}
+
+            <div className="project-tags">
+              {project.tags.map((tag, tagIdx) => (
+                <span key={tagIdx} className="project-tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
+      <style>{`
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 1rem 0;
+        }
+
+        .project-card {
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          background: rgba(255, 239, 179, 0.02);
+          border: 1px solid rgba(255, 239, 179, 0.05);
+          border-radius: 16px;
+        }
+
+        .project-card:hover {
+          transform: translateY(-6px);
+          background: rgba(255, 239, 179, 0.05);
+          border-color: rgba(255, 239, 179, 0.2);
+          box-shadow: 0 12px 30px rgba(255, 239, 179, 0.04);
+        }
+
+        .project-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .project-title {
+          font-family: var(--font-title);
+          font-size: 1.35rem;
+          font-weight: 500;
+          color: var(--color-text);
+        }
+
+        .project-github-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--color-text);
+          opacity: 0.65;
+          font-size: 1.4rem;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          padding: 0.25rem;
+        }
+
+        .project-github-btn:hover {
+          opacity: 1;
+          color: var(--color-accent);
+          transform: scale(1.15);
+          filter: drop-shadow(0 0 6px rgba(255, 239, 179, 0.3));
+        }
+
+        .project-description {
+          font-size: 0.95rem;
+          line-height: 1.6;
+          color: var(--color-text);
+          opacity: 0.8;
+        }
+
+        .project-live-link-container {
+          margin-top: -0.25rem;
+          font-size: 0.9rem;
+          color: var(--color-text);
+          opacity: 0.85;
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .project-live-link {
+          color: var(--color-accent);
+          text-decoration: underline;
+          text-underline-offset: 4px;
+          transition: all 0.3s ease;
+          font-weight: 500;
+        }
+
+        .project-live-link:hover {
+          color: var(--color-text);
+          text-shadow: 0 0 8px rgba(255, 239, 179, 0.4);
+        }
+
+        .project-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-top: auto;
+        }
+
+        .project-tag {
+          font-size: 0.75rem;
+          padding: 0.25rem 0.6rem;
+          border-radius: 4px;
+          background: rgba(255, 239, 179, 0.03);
+          border: 1px solid rgba(255, 239, 179, 0.08);
+          color: var(--color-accent);
+          opacity: 0.75;
+          font-family: var(--font-family);
+          letter-spacing: 0.02em;
+          transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-tag {
+          border-color: rgba(255, 239, 179, 0.15);
+          background: rgba(255, 239, 179, 0.05);
+          opacity: 0.9;
+        }
+      `}</style>
     </Section>
   );
 };

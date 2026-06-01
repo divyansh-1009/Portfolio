@@ -28,8 +28,8 @@ const experiences = [
     company: 'Inter IIT Tech 14.0, Patna (Qtrino Labs)',
     period: 'November 2025 - December 2025',
     bulletPoints: [
-      'Implemented a secure DTLS 1.3 communication protocol tailored for bare-metal RISC-V IoT platforms, integrating state-of-the-art Post-Quantum Cryptography (CRYSTAL-Kyber and CRYSTAL-Dilithium) and pre-shared key (PSK) authentication with zero dynamic memory allocation to prevent memory fragmentation.',
-      'Designed and engineered an asynchronous cryptographic data pipeline utilizing lock-free ring buffers for high-speed packet ingestion, optimizing execution speed and compressing the system memory footprint to sustain real-time, low-latency secure transmissions.'
+      'Implemented a secure DTLS 1.3 communication protocol tailored for bare-metal RISC-V IoT devices, achieving zero dynamic memory allocation to prevent memory fragmentation and ensure deterministic performance in a constrained environment.',
+      'Designed an asynchronous cryptographic data pipeline integrating state-of-the-art Post-Quantum Cryptography (CRYSTAL-Kyber and CRYSTAL-Dilithium) and pre-shared key (PSK) authentication, utilizing lock-free ring buffers to optimize high-speed packet ingestion, compress the memory footprint, and sustain low-latency secure transmissions.'
     ]
   }
 ];
