@@ -4,6 +4,7 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Experiences from './sections/Experiences';
 import Projects from './sections/Projects';
+import Blogs from './sections/Blogs';
 import Skills from './sections/Skills';
 import Contact from './sections/Contact';
 
@@ -25,6 +26,7 @@ export default function App() {
           <About />
           <Experiences />
           <Projects />
+          <Blogs />
           <Skills />
           <Contact />
         </main>
