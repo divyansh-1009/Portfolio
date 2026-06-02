@@ -5,15 +5,27 @@ import { FaGithub } from 'react-icons/fa';
 
 const projects = [
   {
+    title: 'Seiton',
+    description: 'Seiton is an autonomous 3D cargo packing optimizer that calculates optimal placements for heterogeneous cargo boxes inside a container, maximizing volume utilization. It uses OpenCV to extract physical dimensions from raw 2D images and routes them through a high-performance C++ heuristic optimization engine. The system also features a real-time digital twin visualization showing box orientations and placement order in a WebGL-powered environment.',
+    github: 'https://github.com/divyansh-1009/Seiton',
+    liveUrl: 'https://seiton-pi.vercel.app',
+    liveLabel: 'Seiton',
+    tags: ['React', 'Three.js', 'Go', 'C++', 'Python', 'OpenCV', 'GSAP']
+  },
+  {
     title: 'OmniView',
     description: 'OmniView is an on-device screen intelligence system acting as a secure photographic memory. Operating as a background service, it captures screen frames while discarding duplicate captures. The screenshots are then processed to extract context, which is further vectorized and stored locally. Users can query past screen history via an on device LLM.',
     github: 'https://github.com/divyansh-1009/OmniView',
+    liveUrl: 'https://omniview-five.vercel.app/-1009/OmniView',
+    liveLabel: 'OmniView',
     tags: ['Android', 'Kotlin', 'MediaProjection API', 'pHash', 'Accessibility API', 'OCR', 'MobileBERT', 'Gemma 4', 'ObjectBox']
   },
   {
     title: 'MiniTrue',
     description: 'MiniTrue is a decentralized, leaderless time-series database designed for high-throughput IoT telemetry workloads. Operating as a symmetric multi-node cluster, it gossips over TCP and uses a consistent hash ring for deterministic data placement. Ingested data is cached in-memory with pre-aggregated metadata, then compressed and flushed to a custom columnar disk format for fast local and distributed query execution.',
     github: 'https://github.com/divyansh-1009/MiniTrue-Time-Series-Database',
+    liveUrl: 'https://minitrue.vercel.app',
+    liveLabel: 'MiniTrue',
     tags: ['Go', 'Gossip Protocol', 'Consistent Hashing', 'Merkle Trees', 'MQTT', 'Gorilla Compression', 'Parquet Storage']
   },
   {
@@ -61,8 +73,8 @@ const Projects = () => {
     <Section id="projects" title="Projects">
       <div className="projects-grid">
         {projects.map((project, index) => (
-          <motion.div 
-            key={index} 
+          <motion.div
+            key={index}
             className="project-card glass-panel"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,19 +83,19 @@ const Projects = () => {
           >
             <div className="project-header">
               <h3 className="project-title">{project.title}</h3>
-              <a 
-                href={project.github} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="project-github-btn"
                 aria-label={`View ${project.title} on GitHub`}
               >
                 <FaGithub aria-hidden="true" />
               </a>
             </div>
-            
-            <RevealText 
-              text={project.description} 
+
+            <RevealText
+              text={project.description}
               className="project-description"
               delay={index * 0.1 + 0.2}
             />
@@ -91,10 +103,10 @@ const Projects = () => {
             {project.liveUrl && (
               <div className="project-live-link-container">
                 <span className="live-link-label">Live App: </span>
-                <a 
-                  href={project.liveUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="project-live-link"
                   aria-label={`Visit live application for ${project.title}`}
                 >

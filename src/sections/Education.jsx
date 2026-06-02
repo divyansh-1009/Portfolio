@@ -2,45 +2,47 @@ import Section from '../components/Section';
 import { RevealText } from '../components/RevealText';
 import { motion } from 'framer-motion';
 
-const experiences = [
+const educationList = [
   {
-    role: 'Software Development Intern',
-    company: 'Tech Swarm',
-    period: 'September 2025 - November 2025',
+    role: 'BTech in Computer Science',
+    company: 'Indian Institute of Technology, Jodhpur',
+    period: '2024 - Present',
     bulletPoints: [
-      'Engineered a reliable drone-to-ground telemetry communication system utilizing MQTT and Protocol Buffers to ensure seamless data transmission.',
-      'Architected a high-throughput asynchronous Kafka ingestion pipeline, integrating InfluxDB for downsampled storage to optimize and process geospatial queries.'
+      'Maintaining a strong academic record with a current CGPA of 8.55.',
+      'Mentored 12 freshers throughout their first year as a Student Guide for the Wellbeing Committee.',
+      'Managed digital infrastructure as Tech Coordinator for Alumni Affairs.',
+      'Directed flagship technical competitions as Assistant Head for Prometeo 2026.',
+      'Represented the institute at Inter IIT Tech 14.0.'
     ]
   },
   {
-    role: 'Computer Networks and Cryptography Lead',
-    company: 'Inter IIT Tech 14.0, Patna (Qtrino Labs)',
-    period: 'November 2025 - December 2025',
+    role: 'Class XII (CBSE)',
+    company: 'Paramount International School',
+    period: '2022 - 2024',
     bulletPoints: [
-      'Implemented a secure DTLS 1.3 communication protocol tailored for bare-metal RISC-V IoT devices, achieving zero dynamic memory allocation to prevent memory fragmentation and ensure deterministic performance in a constrained environment.',
-      'Designed an asynchronous cryptographic data pipeline integrating state-of-the-art Post-Quantum Cryptography (CRYSTAL-Kyber and CRYSTAL-Dilithium) and pre-shared key (PSK) authentication, utilizing lock-free ring buffers to optimize high-speed packet ingestion, compress the memory footprint, and sustain low-latency secure transmissions.'
+      'Graduated with 95% in the CBSE Class XII Board Exams.',
+      'Secured overall Rank 3 in the school.'
     ]
   },
   {
-    role: 'Software Development Intern',
-    company: 'MyGyan',
-    period: 'September 2025 - January 2026',
+    role: 'Class X (CBSE)',
+    company: 'Modern Convent School',
+    period: '2010 - 2022',
     bulletPoints: [
-      'Engineered an intelligent, LLM-driven multimodal pipeline capable of dynamically generating personalized video lectures and quizzes matched to custom learning goals, implementing advanced semantic caching to efficiently store and reuse assets.',
-      'Developed a custom LLM routing strategy leveraging RouteLLM to intelligently direct prompts based on domain proficiency, cost constraints, and request urgency to achieve optimal accuracy and latency.',
-      'Architected and orchestrated scalable, containerized microservices using Amazon EKS, and designed event-driven serverless routines on AWS Lambda to ensure highly cost-effective, high-availability infrastructure.',
-      'Automated secure CI/CD pipelines using GitHub Actions and built centralized observability dashboards with AWS CloudWatch to streamline deployments and accelerate incident response times.'
+      'Achieved 96.2% in the CBSE Class X Board Exams.',
+      'Honored with the highly coveted Student All-Rounder Award.',
+      'Led athletic teams and sporting events as the Vice Captain for Sports.'
     ]
   }
 ];
 
-const Experiences = () => {
+const Education = () => {
   return (
-    <Section id="experiences" title="Experiences">
+    <Section id="education" title="Education">
       <div className="timeline-container">
-        {experiences.map((exp, index) => (
-          <motion.div 
-            key={index} 
+        {educationList.map((edu, index) => (
+          <motion.div
+            key={index}
             className="timeline-item"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -50,11 +52,11 @@ const Experiences = () => {
             <div className="timeline-line"></div>
             <div className="timeline-dot"></div>
             <div className="timeline-content glass-panel">
-              <span className="timeline-date">{exp.period}</span>
-              <h3 className="timeline-role">{exp.role}</h3>
-              <h4 className="timeline-company">{exp.company}</h4>
+              <span className="timeline-date">{edu.period}</span>
+              <h3 className="timeline-role">{edu.role}</h3>
+              <h4 className="timeline-company">{edu.company}</h4>
               <ul className="timeline-bullets">
-                {exp.bulletPoints.map((point, ptIdx) => (
+                {edu.bulletPoints.map((point, ptIdx) => (
                   <li key={ptIdx} className="timeline-bullet-item">
                     <RevealText text={point} className="timeline-description" />
                   </li>
@@ -204,4 +206,4 @@ const Experiences = () => {
   );
 };
 
-export default Experiences;
+export default Education;
