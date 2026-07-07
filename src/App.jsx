@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
@@ -10,6 +13,25 @@ import Skills from './sections/Skills';
 import Contact from './sections/Contact';
 
 export default function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.07,
+      wheelMultiplier: 0.8, 
+      smoothWheel: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <HelmetProvider>
       <Helmet>
