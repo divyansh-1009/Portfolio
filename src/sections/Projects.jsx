@@ -1,6 +1,6 @@
 import Section from '../components/Section';
 import { RevealText } from '../components/RevealText';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { FaGithub } from 'react-icons/fa';
 
 const projects = [
@@ -8,7 +8,7 @@ const projects = [
     title: 'Seiton',
     description: 'Seiton is an autonomous 3D cargo packing optimizer that calculates optimal placements for heterogeneous cargo boxes inside a container, maximizing volume utilization. It uses OpenCV to extract physical dimensions from raw 2D images and routes them through a high-performance C++ heuristic optimization engine. The system also features a real-time digital twin visualization showing box orientations and placement order in a WebGL-powered environment.',
     github: 'https://github.com/divyansh-1009/Seiton',
-    liveUrl: 'https://seiton-pi.vercel.app',
+    liveUrl: 'https://seiton-supply-chain-packaging.vercel.app',
     liveLabel: 'Seiton',
     tags: ['React', 'Three.js', 'Go', 'C++', 'Python', 'OpenCV', 'GSAP']
   },
@@ -16,7 +16,7 @@ const projects = [
     title: 'OmniView',
     description: 'OmniView is an on-device screen intelligence system acting as a secure photographic memory. Operating as a background service, it captures screen frames while discarding duplicate captures. The screenshots are then processed to extract context, which is further vectorized and stored locally. Users can query past screen history via an on device LLM.',
     github: 'https://github.com/divyansh-1009/OmniView',
-    liveUrl: 'https://omniview-five.vercel.app/-1009/OmniView',
+    liveUrl: 'https://omniview-five.vercel.app',
     liveLabel: 'OmniView',
     tags: ['Android', 'Kotlin', 'MediaProjection API', 'pHash', 'Accessibility API', 'OCR', 'MobileBERT', 'Gemma 4', 'ObjectBox']
   },
@@ -26,7 +26,7 @@ const projects = [
     github: 'https://github.com/divyansh-1009/MiniTrue-Time-Series-Database',
     liveUrl: 'https://minitrue.vercel.app',
     liveLabel: 'MiniTrue',
-    tags: ['Go', 'Gossip Protocol', 'Consistent Hashing', 'Merkle Trees', 'MQTT', 'Gorilla Compression', 'Parquet Storage']
+    tags: ['Go', 'Gossip Protocol', 'Consistent Hashing', 'Merkle Trees', 'Gorilla Compression', 'Parquet Storage']
   },
   {
     title: 'BitVision',
@@ -52,12 +52,14 @@ const projects = [
     title: 'Destyn',
     description: 'Destyn is a college community application designed to connect local students sharing similar interests across nearby campuses. The platform enables users to discover common interests and helps them receive personalized activity recommendations for hanging out in real life. Additionally, it features an anonymous community gossip page and facilitates real-time chat and interactions.',
     github: 'https://github.com/divyansh-1009/Destyn-Project',
+    liveUrl: 'https://destyn.onrender.com',
+    liveLabel: 'Destyn',
     tags: ['Next.js', 'Node.js', 'MongoDb', 'Cloudinary', 'WebSockets', 'Google Gemini']
   },
   {
     title: 'Alumni Yearbook Portal',
     description: 'Alumni Yearbook Portal is a portal designed for the graduating batch of IIT Jodhpur. The platform enables students to upload photo memories and write messages to peers, compiling them automatically into personalized digital yearbooks for each graduate. To drive engagement, it features batch-wide polling alongside private messaging that allows user messages and quotes to be directly integrated into yearbooks.',
-    github: 'https://github.com/divyansh-1009/Alumni-Yearbook/tree/main/alumni-yearbook',
+    github: 'https://github.com/divyansh-1009/Alumni-Yearbook',
     tags: ['React', 'PostgreSQL', 'AWS S3', 'Node.js']
   },
   {

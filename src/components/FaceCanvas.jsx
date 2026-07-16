@@ -215,9 +215,21 @@ const FaceCanvas = () => {
     let targetRotY = 0;
     const clock = new THREE.Clock();
 
+    // Intersection Observer to pause rendering when off-screen
+    let isVisible = true;
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    visibilityObserver.observe(container);
+
     // Animation loop
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
+
+      if (!isVisible) return; // Pause calculations and rendering if off-screen
 
       const elapsedTime = clock.getElapsedTime();
 
@@ -282,6 +294,7 @@ const FaceCanvas = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
+      visibilityObserver.disconnect();
 
       // Dispose resources
       headGeom.dispose();

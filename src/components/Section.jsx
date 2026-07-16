@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { RevealHeading } from './RevealText';
 
 const Section = ({ id, title, children, className = '' }) => {

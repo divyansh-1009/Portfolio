@@ -2,37 +2,47 @@ import Section from '../components/Section';
 import { RevealText, RevealHeading } from '../components/RevealText';
 import Dock from '../components/Dock';
 import { FiPhone, FiMail, FiLinkedin, FiGithub } from 'react-icons/fi';
+import { useState } from 'react';
 
 const Contact = () => {
+  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
   const socialItems = [
     {
       icon: <FiPhone aria-hidden="true" />,
-      label: 'Phone',
+      label: copiedPhone ? 'Copied!' : 'Phone',
+      href: 'tel:+919210992006',
       onClick: () => {
-        navigator.clipboard.writeText('+91 9210992006').catch(() => {});
-        window.location.href = 'tel:+919210992006';
+        navigator.clipboard.writeText('+91 9210992006').then(() => {
+          setCopiedPhone(true);
+          setTimeout(() => setCopiedPhone(false), 2000);
+        }).catch(() => {});
       }
     },
     {
       icon: <FiMail aria-hidden="true" />,
-      label: 'Email',
+      label: copiedEmail ? 'Copied!' : 'Email',
+      href: 'https://mail.google.com/mail/?view=cm&fs=1&to=divyanshyadav1027@gmail.com',
+      target: '_blank',
       onClick: () => {
-        window.location.href = 'mailto:divyanshyadav1027@gmail.com';
+        navigator.clipboard.writeText('divyanshyadav1027@gmail.com').then(() => {
+          setCopiedEmail(true);
+          setTimeout(() => setCopiedEmail(false), 2000);
+        }).catch(() => {});
       }
     },
     {
       icon: <FiLinkedin aria-hidden="true" />,
       label: 'LinkedIn',
-      onClick: () => {
-        window.open('https://www.linkedin.com/in/divyanshyadav1027/', '_blank');
-      }
+      href: 'https://www.linkedin.com/in/divyanshyadav1027/',
+      target: '_blank'
     },
     {
       icon: <FiGithub aria-hidden="true" />,
       label: 'GitHub',
-      onClick: () => {
-        window.open('https://github.com/divyansh-1009', '_blank');
-      }
+      href: 'https://github.com/divyansh-1009',
+      target: '_blank'
     }
   ];
 

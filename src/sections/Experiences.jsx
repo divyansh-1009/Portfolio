@@ -1,6 +1,6 @@
 import Section from '../components/Section';
 import { RevealText } from '../components/RevealText';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 const experiences = [
   {

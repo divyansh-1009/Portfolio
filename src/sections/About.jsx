@@ -1,7 +1,7 @@
 import Section from '../components/Section';
 import { RevealText } from '../components/RevealText';
-import { motion } from 'framer-motion';
-import profileImg from '../assets/divyansh_yadav.jpg';
+import { m as motion } from 'framer-motion';
+import profileImg from '../assets/divyansh_yadav.webp';
 
 const About = () => {
   return (
@@ -39,7 +39,7 @@ const About = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <RevealText 
-            text="Hey! I am a Tech Enthusiast with a keen interest in Software Development, Cybersecurity and Cryptography. I like to design and build secure and scalable software systems that do not break under pressure. I have recently grown very fond of the ideas of Distributed Systems and Operating Systems, and I am currently adding them to my knowledge arsenal." 
+            text="Hey! I am a Tech Enthusiast with a keen interest in Software Development, Cybersecurity and System Design. I like to design and build secure and scalable software systems that do not break under pressure. I have recently grown very fond of the ideas of Distributed Systems and Operating Systems, and I am currently adding them to my knowledge arsenal." 
             style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: 'rgba(255, 239, 179, 0.9)' }}
           />
           <RevealText 

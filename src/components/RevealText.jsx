@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 export const RevealText = ({ text, delay = 0, style = {}, className = "" }) => {
   return (

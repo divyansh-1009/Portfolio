@@ -1,13 +1,17 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
-function DockItem({ children, className = '', onClick, scale, baseItemSize, onMouseEnter, spring, label }) {
+function DockItem({ children, className = '', onClick, scale, baseItemSize, onMouseEnter, spring, label, href, target }) {
+  const Component = href ? motion.a : motion.div;
   return (
-    <motion.div
+    <Component
+      href={href}
+      target={target}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (!href && (e.key === 'Enter' || e.key === ' ')) {
           e.preventDefault();
           onClick?.();
         }
@@ -25,11 +29,11 @@ function DockItem({ children, className = '', onClick, scale, baseItemSize, onMo
         ...spring
       }}
       tabIndex={0}
-      role="button"
+      role={href ? "link" : "button"}
       aria-label={label}
     >
       {children}
-    </motion.div>
+    </Component>
   );
 }
 
@@ -100,6 +104,8 @@ export default function Dock({
               onMouseEnter={() => setHoveredIndex(index)}
               spring={spring}
               label={item.label}
+              href={item.href}
+              target={item.target}
             >
               <DockIcon>{item.icon}</DockIcon>
               <DockLabel label={item.label} isVisible={hoveredIndex === index} />
@@ -147,6 +153,7 @@ export default function Dock({
           outline: none;
           transition: background 0.2s ease, border-color 0.2s ease;
           box-sizing: border-box;
+          text-decoration: none;
         }
 
         .dock-item:hover,
